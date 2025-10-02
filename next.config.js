@@ -2,6 +2,8 @@
 const nextConfig = {
   output: 'export',
   trailingSlash: true,
+  basePath: '/smith_calculator',
+  assetPrefix: '/smith_calculator',
   images: {
     unoptimized: true
   }
