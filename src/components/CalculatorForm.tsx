@@ -648,8 +648,7 @@ export default function CalculatorForm({ onCalculate, onInputsChange }: Calculat
               HELOC Interest Rate (%) <span className="text-red-400">*</span>
             </label>
             <input
-              type="number"
-              step="0.01"
+              type="text"
               className="input-field"
               value={inputs.helocInterestRate || ''}
               onChange={(e) => handleInputChange('helocInterestRate', '', parseFloat(e.target.value) || 7.2)}
