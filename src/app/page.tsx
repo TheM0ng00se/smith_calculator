@@ -23,6 +23,8 @@ export default function Home() {
       marginalTaxRate: 0.25,
     },
     helocInterestRate: 7.2,
+    primaryOwnerPercentage: 100,
+    spousePercentage: 0,
     rentalIncomeToSpouse: false,
   })
 

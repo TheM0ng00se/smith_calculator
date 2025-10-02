@@ -42,6 +42,7 @@ export default function CalculatorForm({ onCalculate, onInputsChange }: Calculat
     helocInterestRate: 7.2, // Default HELOC rate
     primaryOwnerPercentage: 100, // Default to 100% primary owner
     spousePercentage: 0, // Default to 0% spouse
+    rentalIncomeToSpouse: false, // Default to primary taxpayer
   })
 
   const [showProperty2, setShowProperty2] = useState(false)
@@ -240,6 +241,7 @@ export default function CalculatorForm({ onCalculate, onInputsChange }: Calculat
         helocInterestRate: 7.2,
         primaryOwnerPercentage: 100,
         spousePercentage: 0,
+        rentalIncomeToSpouse: false,
       })
       setShowProperty2(false)
       setShowSpouse(false)

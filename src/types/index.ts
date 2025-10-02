@@ -41,6 +41,7 @@ export interface CalculatorInputs {
   // Rental property ownership percentages (must add up to 100%)
   primaryOwnerPercentage: number // Primary owner's percentage of rental property
   spousePercentage: number // Spouse's percentage of rental property
+  rentalIncomeToSpouse: boolean // Whether rental income goes to spouse
 }
 
 export interface CalculationResults {
