@@ -649,10 +649,44 @@ export default function CalculatorForm({ onCalculate, onInputsChange }: Calculat
             </label>
             <input
               type="text"
+              inputMode="decimal"
               className="input-field"
               value={inputs.helocInterestRate || ''}
-              onChange={(e) => handleInputChange('helocInterestRate', '', parseFloat(e.target.value) || 7.2)}
-              placeholder="7.2"
+              onChange={(e) => {
+                const value = e.target.value
+                
+                // Allow empty input
+                if (value === '') {
+                  handleInputChange('helocInterestRate', '', '')
+                  return
+                }
+                
+                // Allow only numbers, decimal point, and empty string
+                const cleanValue = value.replace(/[^0-9.]/g, '')
+                
+                // Prevent multiple decimal points
+                const parts = cleanValue.split('.')
+                if (parts.length > 2) {
+                  return // Don't update if more than one decimal point
+                }
+                
+                // Allow partial input like "7." or "7.2"
+                if (cleanValue.endsWith('.') || /^\d+\.\d*$/.test(cleanValue) || /^\d+$/.test(cleanValue)) {
+                  handleInputChange('helocInterestRate', '', cleanValue)
+                }
+              }}
+              onBlur={(e) => {
+                // When user finishes typing, convert to number and round to 2 decimal places
+                const value = e.target.value
+                if (value && value !== '') {
+                  const parsed = parseFloat(value)
+                  if (!isNaN(parsed)) {
+                    const rounded = Math.round(parsed * 100) / 100
+                    handleInputChange('helocInterestRate', '', rounded)
+                  }
+                }
+              }}
+              placeholder="7.20"
             />
             <p className="text-xs text-dark-400 mt-1">
               Your Home Equity Line of Credit interest rate
